@@ -1,4 +1,4 @@
-package Solution;
+package SR;
 
 import java.util.*;
 
