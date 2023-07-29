@@ -17,7 +17,7 @@ public class BOJ3190 {
     static int N, appleCnt, L;
     static int [][]arr;     // 사과가 있는 곳 1
     static Map<Integer, String> changeDirection = new HashMap<>();
-    static int x = 0, y = 0, answer = 0;
+    static int x = 0, y = 0;
     static List<Snake> snake = new ArrayList<>();
     static int []dx = {-1, 0, 1, 0};
     static int []dy = {0, 1, 0, -1};
@@ -27,8 +27,7 @@ public class BOJ3190 {
         if(nx < 0 || ny < 0 || nx >= N || ny >= N){
             return true;
         }
-        for (int i = 0; i < snake.size(); i++) {
-            Snake s = snake.get(i);
+        for (Snake s : snake) {
             if (nx == s.x && ny == s.y)
                 return true;
         }
