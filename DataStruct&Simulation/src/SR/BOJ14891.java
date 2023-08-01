@@ -9,7 +9,7 @@ public class BOJ14891 {
 	static StringTokenizer st = null;
 	static int K, index, d;
 	static int[] dArr = new int[4];
-	static boolean[] isTurn = new boolean[4];
+	static boolean[] isTurn;
 	
 	public static void makeDirectionArr() {
 		for(int i = 0; i < 4; i++) {
@@ -87,6 +87,7 @@ public class BOJ14891 {
 			st = new StringTokenizer(br.readLine());
 			index = Integer.parseInt(st.nextToken()) - 1;
 			d = Integer.parseInt(st.nextToken());
+			isTurn = new boolean[4];
 			makeDirectionArr();
 			isTurn[index] = true;
 			makeIsTurnRight();
