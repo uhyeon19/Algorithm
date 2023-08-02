@@ -6,7 +6,6 @@ import java.util.*;
 public class BOJ1244 {
 	static int N, students, gender, num;
 	static int[]switchArr;
-	static int[] dy = {-1, 1};	// 좌, 우
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st = null;
 	static StringBuilder sb = new StringBuilder();
