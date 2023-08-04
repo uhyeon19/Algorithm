@@ -15,7 +15,7 @@ public class BOJ7569 {
 	static class Point {
 		int x, y, z;
 
-		Point(int x, int y, int z) {
+		Point(int z, int y, int x) {
 			this.x = x;
 			this.y = y;
 			this.z = z;
@@ -35,7 +35,7 @@ public class BOJ7569 {
 	}
 
 	public static boolean isIn(int nx, int ny, int nz) {
-		if (nx < 0 || ny < 0 || nz < 0 || nx >= N || ny >= M || nz >= H) {
+		if (nx < 0 || ny < 0 || nz < 0 || nx >= M || ny >= N || nz >= H) {
 			return false;
 		}
 		return true;
@@ -44,14 +44,14 @@ public class BOJ7569 {
 	public static void BFS() {
 		while (!q.isEmpty()) {
 			Point p = q.poll();
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 6; i++) {
 				int nx = p.x + dx[i];
 				int ny = p.y + dy[i];
 				int nz = p.z + dz[i];
 
-				if (isIn(nx, ny, nz) && arr[nx][ny][nz] == 0) {
-					arr[nx][ny][nz] += arr[p.x][p.y][p.z] + 1;
-					q.offer(new Point(nx, ny, nz));
+				if (isIn(nx, ny, nz) && arr[nz][ny][nx] == 0) {
+					arr[nz][ny][nx] += arr[p.z][p.y][p.x] + 1;
+					q.offer(new Point(nz, ny, nx));
 				}
 			}
 		}
