@@ -3,7 +3,7 @@ package SR;
 import java.util.*;
 import java.io.*;
 
-public class BOJ2667 {
+public class BOJ2667_BFS {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	static StringBuilder sb = new StringBuilder();
