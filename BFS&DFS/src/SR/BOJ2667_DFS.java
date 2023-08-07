@@ -13,16 +13,6 @@ public class BOJ2667_DFS {
 	static int[] dx = { 0, 0, 1, -1 };
 	static int[] dy = { 1, -1, 0, 0 };
 
-	static class Point {
-		int x, y;
-
-		public Point(int x, int y) {
-			super();
-			this.x = x;
-			this.y = y;
-		}
-	}
-
 	public static boolean isIn(int nx, int ny) {
 		if (nx < 0 || ny < 0 || nx >= N || ny >= N) {
 			return false;
