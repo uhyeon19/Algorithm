@@ -18,13 +18,11 @@ public class BOJ15686 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	static StringBuilder sb = new StringBuilder();
-	static int N, M;
+	static int N, M, ans = Integer.MAX_VALUE;
 	static boolean isSelected[];
 	static List<Point> house = new ArrayList<>();	// 집의 좌표들
 	static List<Point> chicken = new ArrayList<>();	// 치킨집 좌표들
 	static Point[] tmpChicken;	// 조합으로 구할 치킨집 좌표를 담고 있는 배열
-	static PriorityQueue<Integer> ans = new PriorityQueue<>();	
-	// 조합으로 구한 치킨집 좌표의 치킨 거리
 
 	/**
 	 * 좌표를 표현할 클래스
@@ -94,8 +92,7 @@ public class BOJ15686 {
 				// 가장 가까운 치킨집의 거리를 치킨 거리에 추가해 나아가기
 				chickDistance += minChickD;
 			}
-			// 만들어진 치킨집 좌표로 구한 치킨거리를 ans(PriortyQueue)에 담기
-			ans.offer(chickDistance);
+			ans = Integer.min(ans, chickDistance);
 			return;
 		}
 		for(int i = index; i < chicken.size(); i++) {
@@ -111,6 +108,6 @@ public class BOJ15686 {
 	public static void main(String[] args) throws IOException {
 		init();
 		comb(0, 0);
-		System.out.println(ans.peek());	// ans에 있는 값 중 가장 작은 값이 나올 것이니 최소 값.
+		System.out.println(ans);
 	}
 }
