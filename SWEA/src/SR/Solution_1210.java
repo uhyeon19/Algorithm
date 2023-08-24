@@ -1,4 +1,4 @@
-package SR.SWEA;
+package SR;
 
 import java.io.*;
 import java.util.*;
@@ -10,7 +10,7 @@ public class Solution_1210 {
 	static StringTokenizer st = null;
 	static int[][] map;
 	static boolean[][] isVisit;
-	static int[] dy = { 1, -1 }; // ìš°, ì¢Œ
+	static int[] dy = { 1, -1 }; // ?š°, ì¢?
 
 	public static boolean isIn(int ny) {
 		if (ny < 0 || ny >= 100) {

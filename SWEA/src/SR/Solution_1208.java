@@ -1,4 +1,4 @@
-package SR.SWEA;
+package SR;
 
 import java.io.*;
 import java.util.*;

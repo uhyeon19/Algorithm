@@ -1,4 +1,4 @@
-package SR.SWEA;
+package SR;
 
 import java.io.*;
 import java.util.*;
@@ -11,34 +11,34 @@ public class Solution_4012 {
 	static boolean isSelected[];
 
 	public static int minSynergy() {
-		int x = 0;	// ì„ íƒí•œ ì‹ì¬ë£Œë¡œ ë§Œë“œëŠ” ìŒì‹ A
-		int y = 0;	// ì„ íƒí•˜ì§€ ì•Šì€ ì‹ì¬ë£Œë¡œ ë§Œë“œëŠ” ë‹¤ë¥¸ ìŒì‹ B
-		// ì™„ì „ íƒìƒ‰
+		int x = 0;	// ?„ ?ƒ?•œ ?‹?¬ë£Œë¡œ ë§Œë“œ?Š” ?Œ?‹ A
+		int y = 0;	// ?„ ?ƒ?•˜ì§? ?•Š?? ?‹?¬ë£Œë¡œ ë§Œë“œ?Š” ?‹¤ë¥? ?Œ?‹ B
+		// ?™„? „ ?ƒ?ƒ‰
 		for(int i = 0; i < N; i++) {
 			for(int k = 0; k < N; k++) {
-				if(i == k) continue;	// ì„œë¡œ ê°™ì€ ì‹ì¬ë£ŒëŠ” ì‚¬ìš© X (0ì„!)
-				if(isSelected[i] && isSelected[k]) {	// ì„ íƒí•œ ì‹ì¬ë£Œì¸ì§€ í™•ì¸
+				if(i == k) continue;	// ?„œë¡? ê°™ì? ?‹?¬ë£ŒëŠ” ?‚¬?š© X (0?„!)
+				if(isSelected[i] && isSelected[k]) {	// ?„ ?ƒ?•œ ?‹?¬ë£Œì¸ì§? ?™•?¸
 					x += arr[i][k];
-				} else if(!isSelected[i] && !isSelected[k]) {	// ì„ íƒ ì•ˆ í•œ ì‹ì¬ë£Œì¸ì§€ í™•ì¸
+				} else if(!isSelected[i] && !isSelected[k]) {	// ?„ ?ƒ ?•ˆ ?•œ ?‹?¬ë£Œì¸ì§? ?™•?¸
 					y += arr[i][k];
 				}
 			}
 		}
-		return Math.abs(x - y);	// ìŒì‹ Aì˜ ì‹œë„ˆì§€, ìŒì‹ Bì˜ ì‹œë„ˆì§€ ì°¨ì´ ì ˆëŒ“ê°’
+		return Math.abs(x - y);	// ?Œ?‹ A?˜ ?‹œ?„ˆì§?, ?Œ?‹ B?˜ ?‹œ?„ˆì§? ì°¨ì´ ? ˆ?Œ“ê°?
 	}
 	
-	public static void recursionComb(int index, int cnt) { // ì¡°í•© êµ¬í•˜ê¸°
+	public static void recursionComb(int index, int cnt) { // ì¡°í•© êµ¬í•˜ê¸?
 		if (cnt == N / 2) {
 			ans = Math.min(ans, minSynergy());
-			// ìŒì‹ Aì˜ ì‹œë„ˆì§€, ìŒì‹ Bì˜ ì‹œë„ˆì§€ ì°¨ì´ ì ˆëŒ“ê°’ê³¼ ì´ì „í–ˆë˜ ìš”ë¦¬ë“¤ ì ˆëŒ“ê°’ ë¹„êµ
+			// ?Œ?‹ A?˜ ?‹œ?„ˆì§?, ?Œ?‹ B?˜ ?‹œ?„ˆì§? ì°¨ì´ ? ˆ?Œ“ê°’ê³¼ ?´? „?–ˆ?˜ ?š”ë¦¬ë“¤ ? ˆ?Œ“ê°? ë¹„êµ
 			return;
 		} else {
 			for (int i = index; i < N; i++) {
-				if (isSelected[i]) // ì„ íƒëœ ê²ƒì´ë©´ ë„˜ì–´ê°
+				if (isSelected[i]) // ?„ ?ƒ?œ ê²ƒì´ë©? ?„˜?–´ê°?
 					continue;
-				isSelected[i] = true; // ì„ íƒëœ ê±´ trueë¡œ
-				recursionComb(i + 1, cnt + 1); // cntë¥¼ ëŠ˜ë ¤ì„œ ë‹¤ìŒ ìˆ˜ ì°¾ê¸°
-				isSelected[i] = false; // ì„ íƒëë˜ ê±° falseë¡œ ëŒë ¤ì£¼ê¸°
+				isSelected[i] = true; // ?„ ?ƒ?œ ê±? trueë¡?
+				recursionComb(i + 1, cnt + 1); // cntë¥? ?Š˜? ¤?„œ ?‹¤?Œ ?ˆ˜ ì°¾ê¸°
+				isSelected[i] = false; // ?„ ?ƒ??˜ ê±? falseë¡? ?Œ? ¤ì£¼ê¸°
 			}
 		}
 	}
@@ -56,8 +56,8 @@ public class Solution_4012 {
 				}
 			}
 			
-			ans = Integer.MAX_VALUE;	// ans ì´ˆê¸°í™”
-			isSelected = new boolean[N];	// ì„ íƒ ë°°ì—´ ì´ˆê¸°í™”
+			ans = Integer.MAX_VALUE;	// ans ì´ˆê¸°?™”
+			isSelected = new boolean[N];	// ?„ ?ƒ ë°°ì—´ ì´ˆê¸°?™”
 			recursionComb(0, 0);
 			sb.append("#" + tc + " " + ans + "\n");
 		}

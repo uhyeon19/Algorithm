@@ -1,4 +1,4 @@
-package SR.SWEA;
+package SR;
 
 import java.io.*;
 import java.util.*;
@@ -35,14 +35,14 @@ public class Solution_3124 {
 	
 	static int findSet(int a) {
 		if(parents[a] == a) return a;
-		return parents[a] = findSet(parents[a]);	// path ì••ì¶•
+		return parents[a] = findSet(parents[a]);	// path ?••ì¶?
 	}
 	
 	static boolean union(int a, int b) {
 		int aRoot = findSet(a);
 		int bRoot = findSet(b);
-		if(aRoot == bRoot) return false;	// ì‹¸ì´í´ ë°œìƒ ì˜ë¯¸ë¡œ í•´ì„!
-		// ì¹˜ìš°ì¹œ í˜•íƒœê°€ ë  ìˆ˜ ìˆê¸° ë•Œë¬¸ì— ë‚˜ì¤‘ì—ëŠ” ë­í¬(ê¹Šì´) ê´€ë¦¬ë¥¼ í•´ì£¼ëŠ”ê²Œ ì¢‹ì§€ë§Œ ì§€ê¸ˆì€ ì¼ë‹¨ ì´ë ‡ê²Œ ì‚¬ìš©
+		if(aRoot == bRoot) return false;	// ?‹¸?´?´ ë°œìƒ ?˜ë¯¸ë¡œ ?•´?„!
+		// ì¹˜ìš°ì¹? ?˜•?ƒœê°? ?  ?ˆ˜ ?ˆê¸? ?•Œë¬¸ì— ?‚˜ì¤‘ì—?Š” ?­?¬(ê¹Šì´) ê´?ë¦¬ë?? ?•´ì£¼ëŠ”ê²? ì¢‹ì?ë§? ì§?ê¸ˆì? ?¼?‹¨ ?´? ‡ê²? ?‚¬?š©
 		parents[bRoot] = aRoot;
 		return true;
 	}
@@ -63,14 +63,14 @@ public class Solution_3124 {
 				edgeList[i] = new Edge(from, to, weight);			
 			}
 			
-			// ê°„ì„ ë¦¬ìŠ¤íŠ¸ë¥¼ ê°€ì¤‘ì¹˜ ê¸°ì¤€ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
+			// ê°„ì„ ë¦¬ìŠ¤?Š¸ë¥? ê°?ì¤‘ì¹˜ ê¸°ì? ?˜¤ë¦„ì°¨?ˆœ ? •? ¬
 			Arrays.sort(edgeList);
 			
-			// Vê°œì˜ ì •ì ìœ¼ë¡œ make-set ì‘ì—…
+			// Vê°œì˜ ? •? ?œ¼ë¡? make-set ?‘?—…
 			makeSet();
 			
-			long result = 0;	// MST ë¹„ìš© ëˆ„ì  -> í•˜ë‚˜ê°€ 1000000ì¼ ìˆ˜ ìˆë‹¤... ë‹¤ ë”í•˜ë‹¤ë³´ë©´ intí˜•ìœ¼ë¡œëŠ” ì•ˆë¨
-			int count = 0;	// ì—°ê²°ëœ ê°„ì„  ê°œìˆ˜
+			long result = 0;	// MST ë¹„ìš© ?ˆ„?  -> ?•˜?‚˜ê°? 1000000?¼ ?ˆ˜ ?ˆ?‹¤... ?‹¤ ?”?•˜?‹¤ë³´ë©´ int?˜•?œ¼ë¡œëŠ” ?•ˆ?¨
+			int count = 0;	// ?—°ê²°ëœ ê°„ì„  ê°œìˆ˜
 			for(Edge edge : edgeList) {
 				if(union(edge.from, edge.to)) {
 					result += edge.weight;

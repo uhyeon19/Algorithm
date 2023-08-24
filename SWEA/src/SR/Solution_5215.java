@@ -1,4 +1,4 @@
-package SR.SWEA;
+package SR;
 
 import java.util.*;
 import java.io.*;
@@ -20,17 +20,17 @@ public class Solution_5215 {
 	}
 	
 	public static void combination(int start, int grade, int calorie) {
-		if(calorie > L) return;	// ì¹¼ë¡œë¦¬ ì´ˆê³¼
-		if(calorie <= L) ans = Math.max(ans, grade); // ì£¼ì–´ì§„ ì œí•œ ì¹¼ë¡œë¦¬ ì´í•˜ ì¡°í•©ì¸ ê²½ìš° ë°”ê¿ˆ
-		if(start == N) return;	// Nê°œë¥¼ ëª¨ë‘ ë„ë‹¬í–ˆì„ ë•Œ ë©ˆì¶¤
+		if(calorie > L) return;	// ì¹¼ë¡œë¦? ì´ˆê³¼
+		if(calorie <= L) ans = Math.max(ans, grade); // ì£¼ì–´ì§? ? œ?•œ ì¹¼ë¡œë¦? ?´?•˜ ì¡°í•©?¸ ê²½ìš° ë°”ê¿ˆ
+		if(start == N) return;	// Nê°œë?? ëª¨ë‘ ?„?‹¬?–ˆ?„ ?•Œ ë©ˆì¶¤
 
-		// ë¶€ë¶„ ì§‘í•©
-		// ì§€ê¸ˆ ìž¬ë£Œ ì‚¬ìš©í• ëž˜!
-		// start(index)ë¥¼ í•˜ë‚˜ì”© ëŠ˜ë ¤ì„œ ë‹¤ìŒ ìž¬ë£Œë¡œ ê°€ê¸°
-		// í˜„ìž¬ ìž¬ë£Œë¥¼ ì‚¬ìš©í•˜ê¸° ë•Œë¬¸ì— í˜„ìž¬ ìž¬ë£Œì˜ ì •ë³´ë¥¼ ë”í•´ì„œ ë„˜ê²¨ì¤Œ
+		// ë¶?ë¶? ì§‘í•©
+		// ì§?ê¸? ?ž¬ë£? ?‚¬?š©?• ?ž˜!
+		// start(index)ë¥? ?•˜?‚˜?”© ?Š˜? ¤?„œ ?‹¤?Œ ?ž¬ë£Œë¡œ ê°?ê¸?
+		// ?˜„?ž¬ ?ž¬ë£Œë?? ?‚¬?š©?•˜ê¸? ?•Œë¬¸ì— ?˜„?ž¬ ?ž¬ë£Œì˜ ? •ë³´ë?? ?”?•´?„œ ?„˜ê²¨ì¤Œ
 		combination(start + 1, grade + arr.get(start).grade, calorie + arr.get(start).calorie);
-		// ì§€ê¸ˆ ìž¬ë£Œ ì‚¬ìš©í•˜ì§€ ì•Šì„ëž˜!
-		// í˜„ìž¬ ìž¬ë£Œë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šê¸° ë•Œë¬¸ì— í˜„ìž¬ ìž¬ë£Œì˜ ì •ë³´ë¥¼ ë” í•˜ì§€ ì•ŠëŠ”ë‹¤.
+		// ì§?ê¸? ?ž¬ë£? ?‚¬?š©?•˜ì§? ?•Š?„?ž˜!
+		// ?˜„?ž¬ ?ž¬ë£Œë?? ?‚¬?š©?•˜ì§? ?•Šê¸? ?•Œë¬¸ì— ?˜„?ž¬ ?ž¬ë£Œì˜ ? •ë³´ë?? ?” ?•˜ì§? ?•Š?Š”?‹¤.
 		combination(start + 1, grade, calorie);		
 	}
 	
@@ -45,7 +45,7 @@ public class Solution_5215 {
 				st = new StringTokenizer(br.readLine());
 				int grade = Integer.parseInt(st.nextToken());
 				int calorie = Integer.parseInt(st.nextToken());
-				arr.add(new Material(grade, calorie));	// ë¦¬ìŠ¤íŠ¸ì— ìž¬ë£Œ ì •ë³´ ë‹´ê¸°
+				arr.add(new Material(grade, calorie));	// ë¦¬ìŠ¤?Š¸?— ?ž¬ë£? ? •ë³? ?‹´ê¸?
 			}
 			
 			ans = 0;

@@ -1,10 +1,10 @@
-package SR.SWEA;
+package SR;
 
 import java.io.*;
 import java.util.*;
 
 public class Solution_3289 {
-	static int T, N, M;	// ì´ˆê¸° ì§‘í•©ì˜ ê°œìˆ˜
+	static int T, N, M;	// ì´ˆê¸° ì§‘í•©?˜ ê°œìˆ˜
 	static int parents[];
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -14,12 +14,12 @@ public class Solution_3289 {
 	private static void makeSet() {
 		parents = new int[N + 1];
 		for(int i = 0; i < N + 1; i++) {
-			parents[i] = i;	// ëª¨ë“  ìš”ì†ŒëŠ” ìê¸°ë§Œ ì›ì†Œë¡œ ê°–ëŠ” ë‹¨ìœ„ ì„œë¡œì†Œ ì§‘í•©ì´ ë˜ê²Œ í•œë‹¤.(ìê¸° ìì‹ ì´ ê³§ ëŒ€í‘œìì¸ ë£¨íŠ¸)
+			parents[i] = i;	// ëª¨ë“  ?š”?†Œ?Š” ?ê¸°ë§Œ ?›?†Œë¡? ê°–ëŠ” ?‹¨?œ„ ?„œë¡œì†Œ ì§‘í•©?´ ?˜ê²? ?•œ?‹¤.(?ê¸? ??‹ ?´ ê³? ???‘œ??¸ ë£¨íŠ¸)
 		}
 	}
 	
 	/**
-	 * aì™€ bì˜ ëŒ€í‘œê°’ì´ ê°™ì€ì§€ í™•ì¸í•œë‹¤.
+	 * a?? b?˜ ???‘œê°’ì´ ê°™ì?ì§? ?™•?¸?•œ?‹¤.
 	 * @param a
 	 * @param b
 	 * @return
@@ -32,7 +32,7 @@ public class Solution_3289 {
 	}
 	
 	/**
-	 * aì˜ ëŒ€í‘œê°’ì„ ì°¾ëŠ”ë‹¤.
+	 * a?˜ ???‘œê°’ì„ ì°¾ëŠ”?‹¤.
 	 * @param a
 	 * @return
 	 */
@@ -42,16 +42,16 @@ public class Solution_3289 {
 	}
 	
 	/**
-	 * aì™€ bê°€ ê°™ì€ ì§‘í•©ì´ì—ˆë‹¤ë©´ false ê·¸ê²Œ ì•„ë‹ˆë¼ì„œ í•©ì¹  ìˆ˜ ìˆëŠ” ìƒí™©ì´ë¼ë©´ í•©ì¹œë‹¤.
+	 * a?? bê°? ê°™ì? ì§‘í•©?´?—ˆ?‹¤ë©? false ê·¸ê²Œ ?•„?‹ˆ?¼?„œ ?•©ì¹? ?ˆ˜ ?ˆ?Š” ?ƒ?™©?´?¼ë©? ?•©ì¹œë‹¤.
 	 * @param a
 	 * @param b
 	 * @return
 	 */
-	private static boolean union(int a, int b) {	// aê°€ ì†í•œ ì§‘í•©ê³¼ bê°€ ì†í•œ ì§‘í•©ì„ í•©ì¹  ìˆ˜ ìˆë‹¤ë©´ í•©ì¹˜ê³  true ë°˜í™˜, ì•„ë‹ˆë©´ false ë°˜í™˜
+	private static boolean union(int a, int b) {	// aê°? ?†?•œ ì§‘í•©ê³? bê°? ?†?•œ ì§‘í•©?„ ?•©ì¹? ?ˆ˜ ?ˆ?‹¤ë©? ?•©ì¹˜ê³  true ë°˜í™˜, ?•„?‹ˆë©? false ë°˜í™˜
 		int aRoot = findSet(a);
 		int bRoot = findSet(b);
-		if(aRoot == bRoot) return false;	// ì„œë¡œì˜ ëŒ€í‘œìê°€ ê°™ì€ ì¦‰, ê°™ì€ ì§‘í•©ì˜ ìƒí™©ì´ë¯€ë¡œ unioní•˜ì§€ ì•ŠìŒ
-		// union ì²˜ë¦¬ (bRootë¥¼ aRoot ì•„ë˜ë¡œ ë¶™ì´ê¸° : ì„ì˜ë¡œ..!)
+		if(aRoot == bRoot) return false;	// ?„œë¡œì˜ ???‘œ?ê°? ê°™ì? ì¦?, ê°™ì? ì§‘í•©?˜ ?ƒ?™©?´ë¯?ë¡? union?•˜ì§? ?•Š?Œ
+		// union ì²˜ë¦¬ (bRootë¥? aRoot ?•„?˜ë¡? ë¶™ì´ê¸? : ?„?˜ë¡?..!)
 		parents[bRoot] = aRoot;
 		return true;
 	}
