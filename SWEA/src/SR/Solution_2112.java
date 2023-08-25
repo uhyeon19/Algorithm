@@ -7,7 +7,8 @@ public class Solution_2112 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static StringTokenizer st;
-	static int arr[][], copyArr[][], T, D, W, K, num[], count;	// 테스트케이스, 필름 두께x, 가로크기y, 합격 기준
+	static int arr[][], copyArr[][], T, D, W, K, count;
+	static int selectSel[], allSel[], selectPill[];
 	static boolean isSelected[], flag;
 	
 	public static void init() throws IOException {
@@ -16,11 +17,13 @@ public class Solution_2112 {
 		W = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
 		arr = new int[D][W];
+		allSel = new int[D];				
 		copyArr = new int[D][W];
 		isSelected = new boolean[D];
 		flag = false;
 		count = 0;
 		for(int i = 0; i < D; i++) {
+			allSel[i] = i;
 			st = new StringTokenizer(br.readLine());
 			for(int k = 0; k < W; k++) {
 				arr[i][k] = Integer.parseInt(st.nextToken());
@@ -50,14 +53,19 @@ public class Solution_2112 {
 		return true;
 	}
 	
-	public static void comb(int cnt, int count) {
+	public static void comb(int cnt) {
 		if(flag) return;
 		if(cnt == count) {
+			boolean isSelected[] = new boolean[D];
+			for(int i = 0; i < count; i++) {
+				isSelected[selectSel[i]] = true;
+			}
 			int tmpCnt = 0;
 			for(int i = 0; i < D; i++) {
+				copyArr[i] = arr[i].clone();
 				if(isSelected[i]) {
 					for(int k = 0; k < W; k++) {						
-						copyArr[i][k] = num[tmpCnt];
+						copyArr[i][k] = selectPill[tmpCnt];
 					}
 					tmpCnt++;
 				}
@@ -68,31 +76,24 @@ public class Solution_2112 {
 		}
 		
 		for(int i = 0; i < 2; i++) {
-			num[cnt] = i;
-			comb(cnt + 1, count);
+			selectPill[cnt] = i;
+			comb(cnt + 1);
 		}
 	}
 	
-	public static void powerSet(int cnt) {
+	public static void powerSet(int cnt, int index) {
 		if(flag) return;
-		if (cnt == D) {
-			count = 0;
-			for(int i = 0; i < D; i++) {				
-				if(isSelected[i]) {
-					count++;
-					if(count > K - 1) return;
-				}
-				copyArr[i] = arr[i].clone();
-			}
-			num = new int[count];
-			comb(0, count);
+		if(cnt > K) return;
+		if (cnt == selectSel.length) {
+			count = selectSel.length;
+			selectPill = new int[count];
+			comb(0);
 			return;
 		}
-		
-		isSelected[cnt] = false;
-		powerSet(cnt + 1);
-		isSelected[cnt] = true;
-		powerSet(cnt + 1);
+		for(int i = index; i < allSel.length; i++) {
+			selectSel[cnt] = allSel[i];
+			powerSet(cnt + 1, i + 1);
+		}
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -102,7 +103,10 @@ public class Solution_2112 {
 			if(K == 1)
 				bw.write("#" + t + " 0\n");
 			else {
-				powerSet(0);
+				for(int i = 0; i <= D; i++) {
+					selectSel = new int[i];
+					powerSet(0, 0);
+				}
 				if(flag) bw.write("#" + t + " " + count + "\n");
 				else bw.write("#" + t + " " + K + "\n");
 			}
