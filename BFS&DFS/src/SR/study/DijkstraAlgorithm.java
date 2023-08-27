@@ -7,7 +7,7 @@ public class DijkstraAlgorithm {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static StringTokenizer st;
-	static int V, E, start, end, distance[]; // 정점개수, 간선개수, 시작노드, 끝노드, 시작점에서 본인까지 오는 최단거
+	static int V, E, start, end, distance[]; // 정점개수, 간선개수, 시작노드, 끝노드, 시작점에서 본인까지 오는 최단거리
 	static boolean visited[]; // 방문처리
 	static Node adjList[]; // 인접리스트
 	static final int INF = Integer.MAX_VALUE;
@@ -64,7 +64,7 @@ public class DijkstraAlgorithm {
 			
 			// step2 : 방문 처리
 			visited[stopOver] = true;
-			// 상황에 따라 처리 : 경유지가 곧 도착지면 끝내기(출발지에서 모든 정점으로의 최단거리를 구할 시에는 break가 필요없)
+			// 상황에 따라 처리 : 경유지가 곧 도착지면 끝내기(출발지에서 모든 정점으로의 최단거리를 구할 시에는 break가 필요없다)
 			if(stopOver == end) break;
 			
 			// step3 : 경유지를 이용하여 미방문 정점들의 출발지에서 자신으로의 최소비용 고려

@@ -11,7 +11,7 @@ public class Solution_2382 {
 	static int[] dx = { 0, -1, 1, 0, 0 };
 	static int[] dy = { 0, 0, 0, -1, 1 };	// »óÇÏÁÂ¿ì
 	static Queue<Microbe> microbes;
-	static Microbe arr[][], tmpArr[][];
+	static Microbe arr[][];
 
 	static class Microbe {
 		int x, y, size, dir, maxSize;
@@ -38,27 +38,27 @@ public class Solution_2382 {
 	}
 	
 	public static void moveMicrobe() {
-		tmpArr = new Microbe[N][N];
+		arr = new Microbe[N][N];
 		int size = microbes.size();
 		for(int i = 0; i < size; i++) {
 			Microbe m = microbes.poll();
 			int nx = m.x + dx[m.dir];
 			int ny = m.y + dy[m.dir];
 			if(isIn(nx, ny)) {
-				if(tmpArr[nx][ny] != null) {
-					Microbe tmp = tmpArr[nx][ny];
-					tmpArr[nx][ny] = new Microbe(nx, ny, tmp.size + m.size, tmp.maxSize < m.size ? m.dir : tmp.dir, tmp.maxSize < m.size ? m.size : tmp.maxSize);
+				if(arr[nx][ny] != null) {
+					Microbe tmp = arr[nx][ny];
+					arr[nx][ny] = new Microbe(nx, ny, tmp.size + m.size, tmp.maxSize < m.size ? m.dir : tmp.dir, tmp.maxSize < m.size ? m.size : tmp.maxSize);
 				} else {
-					tmpArr[nx][ny] = new Microbe(nx, ny, m.size, m.dir, m.size);
+					arr[nx][ny] = new Microbe(nx, ny, m.size, m.dir, m.size);
 				}
 			} else {
-				if(tmpArr[nx][ny] != null) {
+				if(arr[nx][ny] != null) {
 					if(m.size == 1) continue;
-					Microbe tmp = tmpArr[nx][ny];
-					tmpArr[nx][ny] = new Microbe(nx, ny, (tmp.size + m.size / 2), tmp.size < m.size ? turn(m.dir) : tmp.dir, tmp.maxSize < m.size ? m.size : tmp.maxSize);
+					Microbe tmp = arr[nx][ny];
+					arr[nx][ny] = new Microbe(nx, ny, (tmp.size + m.size / 2), tmp.size < m.size ? turn(m.dir) : tmp.dir, tmp.maxSize < m.size ? m.size : tmp.maxSize);
 				} else {
 					if(m.size == 1) continue;
-					tmpArr[nx][ny] = new Microbe(nx, ny, m.size / 2, turn(m.dir), m.size);
+					arr[nx][ny] = new Microbe(nx, ny, m.size / 2, turn(m.dir), m.size);
 				}
 			}
 		}
@@ -67,7 +67,7 @@ public class Solution_2382 {
 	public static void makeMicrobe() {
 		for(int i = 0; i < N; i++) {
 			for(int k = 0; k < N; k++) {
-				if(tmpArr[i][k] != null) microbes.offer(tmpArr[i][k]);
+				if(arr[i][k] != null) microbes.offer(arr[i][k]);
 			}
 		}
 	}
@@ -86,16 +86,13 @@ public class Solution_2382 {
 		M = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
 		microbes = new ArrayDeque<>();
-		arr = new Microbe[N][N];
-		tmpArr = new Microbe[N][N];
 		for(int i = 0; i < K; i++) {
 			st = new StringTokenizer(br.readLine());
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
 			int size = Integer.parseInt(st.nextToken());
 			int dir = Integer.parseInt(st.nextToken());
-			arr[x][y] = new Microbe(x, y, size, dir, size);
-			microbes.offer(arr[x][y]);
+			microbes.offer(new Microbe(x, y, size, dir, size));
 		}
 	}
 

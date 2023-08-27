@@ -52,7 +52,7 @@ public class BOJ1753 {
 			Node node = pq.poll();
 			int curWeight = node.w;
 			int curVertex = node.v;
-			if (distance[curVertex] < curWeight) continue;
+			if (curWeight >= distance[curVertex]) continue;
 			for (Node n : graph[curVertex]) {
 				int cost = curWeight + n.w;
 				if (cost < distance[n.v]) {
