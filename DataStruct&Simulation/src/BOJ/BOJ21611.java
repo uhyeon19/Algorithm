@@ -6,7 +6,7 @@ import java.util.*;
 public class BOJ21611 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st = null;
-	static int N, M, arr[][], copyArr[][], ans, boomCntList[];
+	static int N, M, arr[][], copyArr[][], boomCntList[];
 	static int []dx = { 0, -1, 1, 0, 0 };
 	static int []dy = { 0, 0, 0, -1, 1 };
 	static int[] ddx = { 0, 1, 0, -1 }; // 좌 하 우 상 이동
@@ -144,12 +144,6 @@ public class BOJ21611 {
 		newList = new ArrayList<>();
 		if(list.size() == 0) return;
 		int curNo = list.get(0), cnt = 1;
-		if(list.size() == 1) {
-			newList.add(cnt);
-			newList.add(curNo);
-			list = newList;
-			return;
-		}
 		for(int i = 1; i < list.size(); i++) {
 			if(curNo == list.get(i)) {
 				cnt++;
