@@ -111,7 +111,7 @@ public class BOJ21611 {
 	// 3. 폭발 일으키기
 	static void boom() {
 		while(true) {
-			if(list.size() == 0) break;
+			if(list.size() == 0) return;
 			boolean isBoom = false;
 			int curNo = 0;
 			int cnt = 1;
@@ -141,8 +141,8 @@ public class BOJ21611 {
 	
 	// 4. 그룹 묶어 변환하기
 	static void grouping() {
-		newList = new ArrayList<>();
 		if(list.size() == 0) return;
+		newList = new ArrayList<>();
 		int curNo = list.get(0), cnt = 1;
 		for(int i = 1; i < list.size(); i++) {
 			if(curNo == list.get(i)) {
@@ -161,6 +161,7 @@ public class BOJ21611 {
 	
 	// 5. 붙여넣기
 	static void makeNewArr() {
+		if(list.size() == 0) return;
 		copyArr = new int[N][N];
 		int x = start.x;
 		int y = start.y;
