@@ -2,7 +2,7 @@ package BOJ;
 
 import java.io.*;
 
-public class BOJ14916 {
+public class BOJ14916_GRID {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static int N, cnt = 0;
 
